@@ -21,7 +21,7 @@ class GitAutomation:
         self.ssh_key_manager = SSHKeyManager(key_path)
         self.git_repo = GitCommand(repo_path)
 
-    def commit_and_push(self, file_path: str, commit_message: str, remote: str = 'origin', branch: str = 'main') -> None:
+    def add_commit_and_push(self, file_path: str, commit_message: str, remote: str = 'origin', branch: str = 'main') -> None:
         """
         Ajoute, commit et push des changements Git en utilisant la clé SSH.
 

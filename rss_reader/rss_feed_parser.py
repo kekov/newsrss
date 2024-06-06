@@ -59,9 +59,9 @@ class RSSFeedParser:
             if item.find('media:content') is not None:
                 image_url = item.find('media:content').get('url')
             elif item.find('enclosure') is not None:
-                image_url = item.find('media:content').get('url')
-            elif item.find('media:thumbnail') is not None:
                 image_url = item.find('enclosure').get('url')
+            elif item.find('media:thumbnail') is not None:
+                image_url = item.find('media:thumbnail').get('url')
 
             # Si aucune image n'a été trouvée, rechercher une balise <img> dans le contenu encodé
             if image_url is None:
@@ -82,6 +82,10 @@ class RSSFeedParser:
                     image_url = img_tag.get('src')
 
             description = self._clean_html(description_html) if description_html else None
+
+            # si description contient plus de 50 mots on ne l'ajoute pas dans la liste
+            if description is not None and len(description.split()) > 50:
+                continue
 
             rss_item = RSSItem(self.rss_url, date, category, title, description, url, image_url)
             items.append(rss_item)

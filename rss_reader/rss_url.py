@@ -8,7 +8,7 @@ class RSSUrl:
         sort_index (int): L'indice de tri pour organiser les flux.
     """
 
-    def __init__(self, name: str, url: str, sort_index: int) -> None:
+    def __init__(self, name: str, url: str, sort_index: int, category: str) -> None:
         """
         Initialise un objet RSSUrl avec un nom, une URL et un indice de tri.
 
@@ -20,6 +20,7 @@ class RSSUrl:
         self.url = url
         self.name = name
         self.sort_index = sort_index
+        self.category = category
 
     def get_url(self) -> str:
         """
@@ -47,3 +48,12 @@ class RSSUrl:
             int: L'indice de tri du flux RSS.
         """
         return self.sort_index
+
+    def get_category(self) -> str:
+        """
+        Retourne la catégorie du flux RSS.
+
+        Returns:
+            str: La catégorie du flux RSS.
+        """
+        return self.category

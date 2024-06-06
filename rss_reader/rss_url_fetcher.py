@@ -32,8 +32,8 @@ class RSSUrlFetcher:
         rss_urls = []
         for line in lines:
             if line:  # ignore empty lines
-                sort_index, name, url = line.split(';')
-                url = url.rstrip()  # remove trailing newline characters
-                rss_url = RSSUrl(name, url, int(sort_index))
+                sort_index, name, url, category = line.split(';')
+                category = category.rstrip()  # remove trailing newline characters
+                rss_url = RSSUrl(name, url, int(sort_index) , category)
                 rss_urls.append(rss_url)
         return rss_urls
